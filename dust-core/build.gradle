@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+    id 'java-library'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    api project(':dust-api')
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:' + junitVersion
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:' + junitVersion
+}
+
+test {
+    useJUnitPlatform()
+}
+
+if (publishScriptFile.exists()) {
+    apply from: publishScriptFile.getAbsolutePath()
+}
